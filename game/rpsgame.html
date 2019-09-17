@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Rock, Paper, Scissors!</title>
+</head>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
+<style>
+	#container{
+		margin: 0 auto;
+		width:80%;
+		text-align: center;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 700;
+	}
+	button.gameBtn {
+		font-family: 'Roboto', sans-serif;
+		font-size: 2em;
+		width:300px;
+		padding:12px;
+		margin:0 15px;
+		border-radius: 8px;
+	}
+	button.gameBtn:hover {
+		background-color:#ccaa3e;
+	}
+	button.gameBtn:active {
+		background-color: crimson;
+	}
+	div.choice {
+		width: 350px;
+		height: 350px;
+		background-color: #8C8C8C;
+		border-radius: 15px;
+		box-shadow: 5px 5px 5px rgba(25,25,25,0.7);
+		margin: 20px auto;
+		float:left;
+	}
+	div#cpuChoice{
+		margin-left: 35px;
+	}
+	div#resultsWrapper {
+		width:70%;
+		margin:0 auto;
+		background-color: dodgerblue;
+	}
+
+	h3.win {
+		color:mediumspringgreen;
+		font-size: 4em;
+		background-color: whitesmoke;
+	}
+	h3.draw {
+		color:#b28b0d;
+		font-size: 4em;
+		background-color: whitesmoke;
+	}
+	h3.lose {
+		color:#7f6d69;
+		font-size: 4em;
+		background-color: whitesmoke;
+		
+	}
+	
+	</style>
+<body>
+	<div id="container">
+		<h1>Let's player "Rock, Paper, Scissors!"</h1>
+	<div id="playerSelect">
+		<button id="rock" class="gameBtn" value="rock">Rock</button>
+		<button id="paper" class="gameBtn" value="paper">Paper</button>
+		<button id="scissors" class="gameBtn" value="scissors">Scissors</button>
+		</div>
+		<div id="results">
+		<h3>And the winner is...</h3>
+			<div id="resultsWrapper">
+			<div id="playerChoice" class="choice"><p>The player chose:</p><br/></div>
+			<div id="cpuChoice" class="choice"><p>The CPU chose:</p></div>
+			</div>
+			
+		</div>
+	</div>
+	<script>
+		window.addEventListener('load', function() {
+			
+			//game elements
+		
+		var rockBtn = document.getElementById('rock'),
+			paperBtn = document.getElementById('paper'),
+			scissorsBtn = document.getElementById('scissors'),
+			playerChoice = document.getElementById('playerChoice'),
+			cpuChoice = document.getElementById('cpuChoice');
+		
+	
+		//random choice
+		var choiceArray = ['rock','paper','scissors'],
+			randomSelect = x => Math.floor(Math.random() * x);
+		
+		
+		
+		function rpsCalc(){
+			
+			//cpu and player make choices
+			let player = this.value,
+				cpu = choiceArray[randomSelect(3)];
+			
+			
+			if (player === cpu) {
+				playerChoice.innerHTML = '<p>The player chose ' + this.value + ".</p><br/> <h3 class='draw'>Draw</h3>";
+				cpuChoice.innerHTML = '<p>The CPU chose ' + cpu + ".</p><br/> <h3 class='draw'>Draw</h3>";
+				
+			} else if (player === 'rock' && cpu === 'paper') {
+				playerChoice.innerHTML = '<p>The player chose ' + this.value + ".</p><br/> <h3 class='lose'>Player lost.</h3>";
+				cpuChoice.innerHTML = '<p>The CPU chose ' + cpu + ".</p><br/><h3 class='win'> CPU won.</h3>";
+			} else if (player === 'paper' && cpu === 'rock') {
+				playerChoice.innerHTML = '<p>The player chose ' + this.value + ".</p><br/> <h3 class='win'>Player won.</h3>";
+				cpuChoice.innerHTML = '<p>The CPU chose ' + cpu + ".</p><br/> <h3 class='lose'>CPU lost</h3>";
+			} else if (player === 'scissors' && cpu === 'rock') {
+				playerChoice.innerHTML = '<p>The player chose ' + this.value + ".</p><br/> <h3 class='lose'>Player lost.</h3>";
+				cpuChoice.innerHTML = '<p>The CPU chose ' + cpu + ".</p><br/><h3 class='win'> CPU won.</h3>";
+			} else if (player === 'rock' && cpu === 'scissors') {
+				playerChoice.innerHTML = '<p>The player chose ' + this.value + ".</p><br/> <h3 class='win'>Player won.</h3>";
+				cpuChoice.innerHTML = '<p>The CPU chose ' + cpu + ".</p><br/><h3 class='lose'>CPU lost</h3>";
+			} else if (player === 'scissors' && cpu === 'paper') {
+				playerChoice.innerHTML = '<p>The player chose ' + this.value + ".</p><br/> <h3 class='win'>Player won.</h3>";
+				cpuChoice.innerHTML = '<p>The CPU chose ' + cpu + ".</p><br/><h3 class='lose'>CPU lost.</h3>";
+			} else if (player === 'paper' && cpu === 'scissors') {
+				playerChoice.innerHTML = '<p>The player chose ' + this.value + ".</p><br/> <h3 class='lose'>Player lost.</h3>";
+				cpuChoice.innerHTML = '<p>The CPU chose ' + cpu + ".</p><br/> <h3 class='win'> CPU won.</h3>";
+			}
+			
+		}
+		
+		rockBtn.addEventListener('click',rpsCalc);
+		paperBtn.addEventListener('click',rpsCalc);
+		scissorsBtn.addEventListener('click',rpsCalc);
+		
+			
+		});
+	
+	</script>
+</body>
+</html>
