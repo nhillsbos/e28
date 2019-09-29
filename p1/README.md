@@ -1,6 +1,7 @@
 # Project 1 + By: Nick Hills 
 
-+ Production URL: <http://p1.nickhills.boston>  
++ Production URL: <http://p1.daoist.life>
++ Rock, Paper Scissors game.  
 
 ## Outside resources 
 
