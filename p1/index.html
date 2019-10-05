@@ -52,12 +52,27 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
             width:35px;
         }
 
+        #playerChoices > img:hover, #cpuChoices > img:hover {
+            border: 3px solid red;
+            border-radius: 5px;
+        }
+
+        #playerChoices > img:active, #cpuChoices > img:active {
+            border: 3px solid yellow;
+            background-color: yellow;
+            border-radius: 5px;
+        }
+
         #cpuRock2, #cpuPaper2, #cpuScissors2, #playerRock2, #playerPaper2, #playerScissors2 {
             display:none;
         }
 
         [v-cloak] {
             display: none;
+        }
+
+        #lowerBoard {
+            
         }
     </style>
 </head>
@@ -74,9 +89,9 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
                     <p v-if="playerName">Player: {{ playerName }}</p>
                     <p v-else>No name? What a shame!</p>
                     <div id="playerChoices">
-                        <img src="imgs/rock.svg" alt="rock" id="playerRock" />
-                        <img src="imgs/paper.svg" alt="paper" id="playerPaper" />
-                        <img src="imgs/scissors.svg" alt="playerScissors" />
+                        <img @click="makeChoice" v-bind:src="imgs[0]" value="rock" alt="rock" id="playerRock" class="rock"/>
+                        <img @click="makeChoice" v-bind:src="imgs[1]" alt="paper" id="playerPaper" class="paper"/>
+                        <img @click="makeChoice" v-bind:src="imgs[2]" alt="playerScissors" id="playerScissors" class="scissors"/>
                     </div>
                 </div>
                 <div id="versusBox" class="col-sm-4">
@@ -86,9 +101,9 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
                     <!-- CPU options -->
                     <p>CPU</p>
                     <div id="cpuChoices">
-                        <img src="imgs/rock.svg" alt="rock" id="cpuRock" />
-                        <img src="imgs/paper.svg" alt="paper" id="cpuPaper" />
-                        <img src="imgs/scissors.svg" alt="cpuScissors" />
+                        <img v-bind:src="imgs[0]" alt="rock" id="cpuRock" />
+                        <img v-bind:src="imgs[1]" alt="paper" id="cpuPaper" />
+                        <img v-bind:src="imgs[2]" alt="cpuScissors" />
                     </div>
                 </div>
 
@@ -96,49 +111,28 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
             <article id="lowerBoard" class="row">
                 <div id="playerDraw" class="col-sm-4">
                     <p>You chose:</p>
-                    <img src="imgs/rock.svg" alt="rock" id="playerRock2" />
-                    <img src="imgs/paper.svg" alt="paper" id="playerPaper2" />
-                    <img src="imgs/scissors.svg" alt="playerScissors2" id="playerScissors2"/>
+                    <img v-if="playerChoice == 'playerRock'" v-bind:src="imgs[0]" alt="rock" />
+        <img v-else-if="playerChoice == 'playerPaper'" v-bind:src="imgs[1]" alt="paper" />
+        <img v-else-if="playerChoice == 'playerScissors'" v-bind:src="imgs[2]" alt="playerScissors" />
                 </div>
-                <div id="theWinnerIs" class="col-sm-4">
+                <div  id="theWinnerIs" class="col-sm-4">
                     <!-- <p v-if="victor != null">Who's the winner? <input type="text" v-model="victor"/></p> -->
-                    <p v-if="victor = 'cpu'">CPU wins</p>
-                    <p v-if="victor = 'player'">Player Wins</p>
+                    
+                    <p v-if="victor == 'cpu'"> CPU</p>
+                    <p v-else-if="victor == 'player'">{{ playerName }}</p>
+                    <p v-else-if="victor == 'draw'">Draw Game.</p>
                 </div>
                 <div id="cpuDraw" class="col-sm-4">
                     <p>CPU chose:</p>
-                    <img src="imgs/rock.svg" alt="rock" id="cpuRock2" />
-                    <img src="imgs/paper.svg" alt="paper" id="cpuPaper2" />
-                    <img src="imgs/scissors.svg" alt="cpuScissors2" id="playerScissors2" />
+                    <div v-if="cpuChoice == 'cpuRock'"><img  v-bind:src="imgs[0]" alt="rock" /></div>
+                    <img v-else-if="cpuChoice == 'cpuPaper'" v-bind:src="imgs[1]" alt="paper" />
+                    <img v-else-if="cpuChoice == 'cpuScissors'" v-bind:src="imgs[2]" alt="cpuScissors2"  />
                 </div>
             </article>
 
 
         </section>
-
-
-        <!--   <p v-if="playerName != null">What's your name? <input type="text" v-model="playerName"></p><br/>
-    <p v-if="teamName != null">What's your team's name? <input type="text" v-model="teamName"></p>
-<h1>Player: {{playerName}}</h1>
-<h3>Team: {{teamName}}</h3>
-<h4>{{myArray}}</h4>
-
-
-<p v-if="seen">Message Can Be Seen!</p>
-  <p><button  v-on:click="seen = !seen">Toggle</button></p>
-
-
-<label>Guess the number <input type='text' v-model='guess'></label>
-<button v-on:click="guesses.push(guess)">Guess</button>
-<ul v-if="guesses.length > 0" v-for="guess in guesses">
-    <li>{{guess}}</li>
-</ul> -->
-<p>This is a test:</p>
-        <ul>
-            <li v-for="choice in choices">{{ choice }}</li>
-
-        </ul>
-        <p v-on:load="calcChoice()"></p>
+   
     </main>
     <footer>
         
