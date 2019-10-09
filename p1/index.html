@@ -3,57 +3,63 @@
 
 <head>
     <title>Rock, Paper, Scissors!</title>
-    <!-- Latest compiled and minified CSS -->
+    <!-- Roboto typeface -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900&display=swap" rel="stylesheet">
+
+    <!-- jQuery --><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
 integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
 integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
     <script src="script.js" defer></script>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         #myApp {
             margin: 0 auto;
-            background-color: rgb(87, 165, 42);
-            padding: 15px;
+            //background-color: rgb(87, 165, 42);
+            padding: 0px 15px;
             border-radius: 8px;
-            width: 500px;
+            max-width: 800px;
+            min-width: 525px;
         }
         #gameBoard {
             margin-top: 15px;
+            //background-color: blue;
+            padding:10px;
+            border-radius: 15px;
         }
         #upperBoard {
-            background-color: whitesmoke;
+            //background-color: aqua;
+            padding: 5px;
             border-radius: 8px;
+            margin: 15px 0px;
+            clear:both;
         }
         #playerBox {
             background-color: lavender;
+            border-radius: 15px;
+            padding:10px;
         }
-        #versusBox {
-            background-color: coral;
-        }
-        #cpuBox {
-            background-color: aqua;
-        }
-        #playerDraw {
-            background-color: lavender;
-        }
-        #theWinnerIs {
-            background-color: coral;
-        }
-        #cpuDraw {
-            background-color: aqua;
-        }
+ 
 
         #playerChoices > img, #cpuChoices > img {
-            width:35px;
+            width:65px;
         }
 
         #playerChoices > img:hover, #cpuChoices > img:hover {
             border: 3px solid red;
+            background-color: red;
             border-radius: 5px;
         }
 
@@ -64,77 +70,117 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
         }
 
         #cpuRock2, #cpuPaper2, #cpuScissors2, #playerRock2, #playerPaper2, #playerScissors2 {
-            display:none;
+            //display:none;
         }
 
         [v-cloak] {
-            display: none;
+            //display: none;
         }
 
         #lowerBoard {
             
         }
+
+        .gameHeader {
+            clear:both;
+            margin-bottom: 15px;
+        }
+
+.entName {
+    margin: 5px auto 5px auto;
+    width:50%;
+}
+
+      .myBlock {
+          min-height: 300px;
+      }      
+      h1,h2,h3,h4 {
+          font-family: 'Roboto', sans-serif;
+      }
+      h1 {
+          font-weight: 900;
+      }
+      p {
+          font-family: 'Roboto', sans-serif;
+          font-family: 400;
+      }
+      .myText {
+          display:block;
+          height:100%;
+          width: 100%;
+      }
+      #entPlaNa {
+          //display:none;
+      }
+      .hideName {
+          display: none;
+      }
+     
+        
     </style>
 </head>
 
 <body>
-    <div id="container"></div>
+    <div class="container"></div>
     <main id="myApp" v-cloak>
-        <h1 class="col-sm-12">{{ gameTitle }}</h1>
+        <div class="col-sm-12 gameHeader">
+                <h1 class="text-center">{{ gameTitle }}</h1>
+
+
+        </div>
         <section id="gameBoard">
-            <article id="upperBoard" class="row">
-                <div id="playerBox" class="col-sm-4">
-                    <!-- player options -->
-                    <input type="text" placeholder="Type in a name" v-model="playerName"/>
-                    <p v-if="playerName">Player: {{ playerName }}</p>
-                    <p v-else>No name? What a shame!</p>
-                    <div id="playerChoices">
-                        <img @click="makeChoice" v-bind:src="imgs[0]" value="rock" alt="rock" id="playerRock" class="rock"/>
-                        <img @click="makeChoice" v-bind:src="imgs[1]" alt="paper" id="playerPaper" class="paper"/>
-                        <img @click="makeChoice" v-bind:src="imgs[2]" alt="playerScissors" id="playerScissors" class="scissors"/>
-                    </div>
-                </div>
-                <div id="versusBox" class="col-sm-4">
-                    <img src="" alt="versus" />
-                </div>
-                <div id="cpuBox" class="col-sm-4">
-                    <!-- CPU options -->
-                    <p>CPU</p>
-                    <div id="cpuChoices">
-                        <img v-bind:src="imgs[0]" alt="rock" id="cpuRock" />
-                        <img v-bind:src="imgs[1]" alt="paper" id="cpuPaper" />
-                        <img v-bind:src="imgs[2]" alt="cpuScissors" />
+            <article id="upperBoard" class="row ">
+                <div class="row">
+                    <div id="entPlaNa" class="col-sm-12" v-if="!playerChoice"><!-- enter your name here, it will disappear when a choice is made -->
+                <h3 class="text-center">Enter your name:</h3>
+                  <input type="text" class="form-control entName text-center"  placeholder="Mysterious Stranger" v-model="playerName"/>
+                </div> 
+            </div>   <!-- name display and rps choices -->
+                <div id="playerBox" class="col-sm-6 col-sm-offset-3">
+                        <p v-if="playerName" class="text-center"><strong>Player:</strong> {{ playerName }}</p>
+                        <p v-else class="text-center"><strong>Mysterious Stranger</strong></p>
+
+                    <!-- player options, the user cannot change names without reloading after the first click -->
+                    <div id="playerChoices"  class="text-center">
+                        <img @click="makeChoice" v-bind:src="imgs[0]" value="rock" alt="rock" id="playerRock" />
+                        <img @click="makeChoice" v-bind:src="imgs[1]" alt="paper" id="playerPaper" />
+                        <img @click="makeChoice" v-bind:src="imgs[2]" alt="playerScissors" id="playerScissors" />
                     </div>
                 </div>
 
             </article><!-- this is the lower board where the choices and winner are displayed -->
             <article id="lowerBoard" class="row">
-                <div id="playerDraw" class="col-sm-4">
-                    <p>You chose:</p>
-                    <img v-if="playerChoice == 'playerRock'" v-bind:src="imgs[0]" alt="rock" />
-        <img v-else-if="playerChoice == 'playerPaper'" v-bind:src="imgs[1]" alt="paper" />
-        <img v-else-if="playerChoice == 'playerScissors'" v-bind:src="imgs[2]" alt="playerScissors" />
+                <div v-if="playerChoice" id="playerDraw" class="col-sm-4"><!-- player choice displayed -->
+                    <p class="text-center alert alert-info"><strong>You chose:</strong></p>
+                    <img v-if="playerChoice == 'playerRock'" v-bind:src="imgs[0]" alt="rock" class="img-responsive"/>
+        <img v-else-if="playerChoice == 'playerPaper'" v-bind:src="imgs[1]" alt="paper" class="img-responsive"/>
+        <img v-else-if="playerChoice == 'playerScissors'" v-bind:src="imgs[2]" alt="playerScissors" class="img-responsive"/>
                 </div>
+                <div v-else class="col-sm-12" ><h3 class="text-center" >Are you ready?</h3></div>
+                <template v-if="playerChoice">
+                    <!-- displays the winner -->
                 <div  id="theWinnerIs" class="col-sm-4">
-                    <!-- <p v-if="victor != null">Who's the winner? <input type="text" v-model="victor"/></p> -->
-                    
-                    <p v-if="victor == 'cpu'"> CPU</p>
-                    <p v-else-if="victor == 'player'">{{ playerName }}</p>
-                    <p v-else-if="victor == 'draw'">Draw Game.</p>
+                    <p v-if="victor == 'cpu'" class="text-center alert alert-danger" > <strong>CPU wins.</strong></p>
+                    <p v-else-if="(playerName != null && victor == 'player')" class="text-center alert alert-success"><strong>{{ playerName }} wins.</strong></p>
+                    <p v-else-if="(playerName == null && victor == 'player') || (playerName == '' && victor == 'player')" class="text-center alert alert-success"><strong>Mysterious Stranger wins.</strong></p>
+                    <p v-else-if="victor == 'draw'" class="text-center alert alert-info"><strong>Draw Game.</strong></p>
+                
                 </div>
+            </template> 
+                <!-- cpu draw -->
+                <template v-if="cpuChoice">
                 <div id="cpuDraw" class="col-sm-4">
-                    <p>CPU chose:</p>
-                    <div v-if="cpuChoice == 'cpuRock'"><img  v-bind:src="imgs[0]" alt="rock" /></div>
-                    <img v-else-if="cpuChoice == 'cpuPaper'" v-bind:src="imgs[1]" alt="paper" />
-                    <img v-else-if="cpuChoice == 'cpuScissors'" v-bind:src="imgs[2]" alt="cpuScissors2"  />
+                    <p class="text-center alert alert-warning"><strong>CPU chose:</strong></p>
+                    <img  v-bind:src="imgs[0]" v-if="cpuChoice == 'cpuRock'" alt="rock" class="img-responsive center-block"/>
+                    <img v-else-if="cpuChoice == 'cpuPaper'" v-bind:src="imgs[1]" alt="paper" class="img-responsive center-block"/>
+                    <img v-else-if="cpuChoice == 'cpuScissors'" v-bind:src="imgs[2]" alt="cpuScissors2"  class="img-responsive center-block"/>
                 </div>
+            </template>
             </article>
 
 
         </section>
    
     </main>
-    <footer>
-        
-    </footer>
-</body </html>
+
+</body> </html>
