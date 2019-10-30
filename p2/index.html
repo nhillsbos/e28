@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rock, Paper, Scissors!</title>
+<!-- script link -->
+<script src="js/script.js" defer></script>
+
+    <!-- Roboto typeface 
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900&display=swap" rel="stylesheet">-->
+
+    <!-- jQuery <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+<!-- Latest compiled and minified CSS 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+
+<!-- Optional theme 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
+integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
+
+<!-- font awesome icons -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+<!-- from "get started" fontawesome page -->
+  <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) 
+  <link href="\node_modules/@fortawesome/fontawesome-free/css\fontawesome.css" rel="stylesheet">
+  <link href="\node_modules\@fortawesome\fontawesome-free/css/brands.css" rel="stylesheet">
+  <link href="\node_modules\@fortawesome\fontawesome-free/css/solid.css" rel="stylesheet">-->
+
+<!-- Latest compiled and minified JavaScript 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+
+<!-- animate.css stuff 
+<link rel="stylesheet" href="node_modules\animate.css\animate.min.css">-->
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script> -->
+   <!--<script src="script.js" defer></script>--> 
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        #myApp {
+            margin: 0 auto;
+            padding: 0px 15px;
+            border-radius: 8px;
+            max-width: 800px;
+            min-width: 525px;
+        }
+        #gameBoard {
+            margin-top: 15px;
+            padding:10px;
+            border-radius: 15px;
+        }
+        #upperBoard {
+            padding: 5px;
+            border-radius: 8px;
+            margin: 15px 0px;
+            clear:both;
+        }
+        #playerBox {
+            background-color: lavender;
+            border-radius: 15px;
+            padding:10px;
+        }
+ 
+
+        #playerChoices > img, #cpuChoices > img {
+            width:65px;
+        }
+
+        #playerChoices > img:hover, #cpuChoices > img:hover {
+            border: 3px solid red;
+            background-color: red;
+            border-radius: 5px;
+        }
+
+        #playerChoices > img:active, #cpuChoices > img:active {
+            border: 3px solid yellow;
+            background-color: yellow;
+            border-radius: 5px;
+        }
+
+        [v-cloak] {
+            //display: none;
+        }
+
+        #lowerBoard img {
+            width:300px;
+            filter: drop-shadow( 8px 8px 6px rgba(0, 0, 0, .59));/* https://stackoverflow.com/questions/6088409/svg-drop-shadow-using-css3 */
+        }
+
+        .gameHeader {
+            clear:both;
+            margin-bottom: 15px;
+        }
+
+.entName {
+    margin: 5px auto 5px auto;
+    width:50%;
+}
+
+      .myBlock {
+          min-height: 300px;
+      }      
+      h1,h2,h3,h4 {
+          font-family: 'Roboto', sans-serif;
+      }
+      h1 {
+          font-weight: 900;
+      }
+      p {
+          font-family: 'Roboto', sans-serif;
+          font-family: 400;
+      }
+      .myText {
+          display:block;
+          height:100%;
+          width: 100%;
+      }
+      .hideName {
+          display: none;
+      }
+
+      .fa-star {
+          
+          color:gold;
+          filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));/* https://stackoverflow.com/questions/6088409/svg-drop-shadow-using-css3 */
+          font-size: 3.5em;
+          float:right;
+      }
+     .cpuStar {
+         color:lawngreen;
+         float:left;
+     }
+     .myStar {
+         animation-name: pulse;
+         animation-duration: 350ms;
+         animation-play-state: paused;
+     }
+     .myStar:hover {
+         animation-play-state: running;
+     }
+        .allTheWins {
+            margin:10px 0px;
+        }
+        #playerScore {
+            position: relative;
+            min-height: 50px;
+            min-width: 50px;
+            background-color:red;
+            border-radius: 10px;
+            box-shadow: 8px 8px 8px rgba(75, 75, 75, .65);
+            top:100px;
+            left: 100px;
+        }
+
+        #playerDraw {
+           
+        }
+        #cpuDraw {
+
+        }
+
+        .animated.delay-1s {
+            animation-delay: .05s;
+        }
+        .delay-1as{
+            animation-delay: .15s;
+        }
+
+
+        .fadeInDown {
+            animation-duration: 550ms;
+        }
+        .rotateIn {
+            animation-duration: 250ms;
+            animation-timing-function: ease-out;
+        }
+        .scoreboard {
+            background-color: chocolate;
+            padding: 5px;
+            border-radius: 8px;
+            box-shadow: 8px 8px 5px rgba(44, 44, 44, 0.72);
+        }
+
+        .uhOh {
+            background-color: royalblue;
+        }
+        .coolClass {
+            background-color: black;
+        }
+        .feedBackClass {
+            background-color: aqua;
+        }
+        .errorClass {
+            background-color: teal;
+        }
+        .goodJob {
+            background-color: chartreuse;
+        }
+        .fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    <main id="myApp" class="animated delay-1s fadeInDown" v-cloak>
+         
+        <game-header v-bind:game-title="gameTitle"> 
+            <template v-slot:subtitle>This game was designed by Nick Hills in VueJS.</template>
+        </game-header>
+        <section id="gameBoard">
+            
+            <article id="upperBoard" class="row "> 
+
+                <!-- enter player name here -->
+
+                 <enter-name 
+                v-bind:player-choice="playerChoice"
+                v-if="!playerChoice"
+                v-bind:player-name="playerName"
+                v-model.lazy="playerName"
+                v-bind:placeholder-name="placeholderName">
+            </enter-name>  
+                
+
+            <!-- name display and rps choices-->
+               <player-options 
+               v-on:make-choice="makeChoice($event)"
+                v-bind:player-name="playerName"
+                v-bind:placeholder-name="placeholderName">
+            </player-options> 
+
+            </article>
+            
+            <!-- this is the lower board where the choices and winner are displayed -->
+            <article id="lowerBoard" class="row">
+                 displays player choice 
+                <display-player-choice
+                v-bind:player-choice="playerChoice"
+                v-bind:player-rock="playerRock"
+                v-bind:player-paper="playerPaper"
+                v-bind:player-scissors="playerScissors"
+                v-bind:cpu-choice="cpuChoice"
+                v-bind:cpu-rock="cpuRock"
+                v-bind:cpu-paper="cpuPaper"
+                v-bind:cpu-scissors="cpuScissors">
+
+                </display-player-choice>
+
+                <div v-if="!playerChoice" class="col-sm-12" ><h3 class="text-center" >Are you ready?</h3></div>
+                <!-- display the winner -->
+               <display-winner
+               v-bind:player-name="playerName"
+               v-bind:player-choice="playerChoice"
+               v-bind:victor="victor">
+                   </display-winner>
+
+                <!-- cpu draw -->
+                <display-cpu-choice
+                v-bind:cpu-choice="cpuChoice"
+                v-bind:cpu-rock="cpuRock"
+                v-bind:cpu-paper="cpuPaper"
+                v-bind:cpu-scissors="cpuScissors">
+
+                </display-cpu-choice>
+
+            <!-- displaying player and cpu accumulative wins -->
+        <div style="clear:both;"></div>
+        <display-stars
+            v-bind:player-wins="playerWins"
+            v-bind:cpu-wins="cpuWins"
+            v-bind:who-is-winning="whoIsWinning">
+                </display-stars> 
+            
+            
+            </article>
+
+
+        </section>
+   
+    </main>
+
+
+</body> </html>
