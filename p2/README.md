@@ -1,9 +1,14 @@
-# Project 2 + By: Nick Hills 
 
+# Project 2 "Rock, Paper, Scissors"
++ By: *Nick Hills*
 + Production URL: <http://p2.daoist.life>
- _Rock, Paper Scissors game (modular design)._  
 
-## Outside resources 
+## Build strategy
+*Put an x in the build strategy you used. Put an x in each if you tackled both.*
++ [x ] Integrated
++ [ ] Comprehensive
+
+## Outside resources
 
 * bootstrap 
 [get started with bootstrap](https://getbootstrap.com/docs/3.3/getting-started/)
@@ -22,7 +27,3 @@ animation used for the stars: "rotateIn"
 ```
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900&display=swap" rel="stylesheet">
 ```
-
-## Notes for instructor
-
-This version of rps uses components (SFCs)
