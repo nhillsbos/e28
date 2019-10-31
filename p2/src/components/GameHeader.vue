@@ -3,7 +3,7 @@
                 <h1 class="text-center">{{ gameTitle }}</h1>
                 <h4 class="text-center"><slot name="subtitle"></slot></h4>
         </div>
-</template
+</template>
 <script>
 module.exports = {
        data: function () {
@@ -13,4 +13,8 @@ module.exports = {
 }
 
 </script>
-<style scoped></style>
+<style scoped>
+h1 {
+        font-size: 4.5em;
+}
+</style>

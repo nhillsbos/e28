@@ -15,9 +15,21 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
 integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+<!-- font awesome icons -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+<!-- from "get started" fontawesome page -->
+  <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
+  <link href="\node_modules/@fortawesome/fontawesome-free/css\fontawesome.css" rel="stylesheet">
+  <link href="\node_modules\@fortawesome\fontawesome-free/css/brands.css" rel="stylesheet">
+  <link href="\node_modules\@fortawesome\fontawesome-free/css/solid.css" rel="stylesheet">
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<!-- animate.css stuff -->
+<link rel="stylesheet" href="node_modules\animate.css\animate.min.css">
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
     <script src="script.js" defer></script>
@@ -27,7 +39,6 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
         }
         #myApp {
             margin: 0 auto;
-            //background-color: rgb(87, 165, 42);
             padding: 0px 15px;
             border-radius: 8px;
             max-width: 800px;
@@ -35,12 +46,10 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
         }
         #gameBoard {
             margin-top: 15px;
-            //background-color: blue;
             padding:10px;
             border-radius: 15px;
         }
         #upperBoard {
-            //background-color: aqua;
             padding: 5px;
             border-radius: 8px;
             margin: 15px 0px;
@@ -69,16 +78,13 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
             border-radius: 5px;
         }
 
-        #cpuRock2, #cpuPaper2, #cpuScissors2, #playerRock2, #playerPaper2, #playerScissors2 {
-            //display:none;
-        }
-
         [v-cloak] {
             //display: none;
         }
 
-        #lowerBoard {
-            
+        #lowerBoard img {
+            width:300px;
+            filter: drop-shadow( 8px 8px 6px rgba(0, 0, 0, .59));/* https://stackoverflow.com/questions/6088409/svg-drop-shadow-using-css3 */
         }
 
         .gameHeader {
@@ -109,32 +115,112 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
           height:100%;
           width: 100%;
       }
-      #entPlaNa {
-          //display:none;
-      }
       .hideName {
           display: none;
       }
-     
-        
+
+      .fa-star {
+          
+          color:gold;
+          filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));/* https://stackoverflow.com/questions/6088409/svg-drop-shadow-using-css3 */
+          font-size: 3.5em;
+          float:right;
+      }
+     .cpuStar {
+         color:lawngreen;
+         float:left;
+     }
+     .myStar {
+         animation-name: pulse;
+         animation-duration: 350ms;
+         animation-play-state: paused;
+     }
+     .myStar:hover {
+         animation-play-state: running;
+     }
+        .allTheWins {
+            margin:10px 0px;
+        }
+        #playerScore {
+            position: relative;
+            min-height: 50px;
+            min-width: 50px;
+            background-color:red;
+            border-radius: 10px;
+            box-shadow: 8px 8px 8px rgba(75, 75, 75, .65);
+            top:100px;
+            left: 100px;
+        }
+
+        #playerDraw {
+           
+        }
+        #cpuDraw {
+
+        }
+
+        .animated.delay-1s {
+            animation-delay: .05s;
+        }
+        .delay-1as{
+            animation-delay: .15s;
+        }
+
+
+        .fadeInDown {
+            animation-duration: 550ms;
+        }
+        .rotateIn {
+            animation-duration: 250ms;
+            animation-timing-function: ease-out;
+        }
+        .scoreboard {
+            background-color: chocolate;
+            padding: 5px;
+            border-radius: 8px;
+            box-shadow: 8px 8px 5px rgba(44, 44, 44, 0.72);
+        }
+
+        .uhOh {
+            background-color: royalblue;
+        }
+        .coolClass {
+            background-color: black;
+        }
+        .feedBackClass {
+            background-color: aqua;
+        }
+        .errorClass {
+            background-color: teal;
+        }
+        .goodJob {
+            background-color: chartreuse;
+        }
+        .fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
     </style>
 </head>
 
 <body>
-    <div class="container"></div>
-    <main id="myApp" v-cloak>
+    <div class="container">
+    <main id="myApp" class="animated delay-1s fadeInDown" v-cloak>
+          <!--  <div id="playerScore" v-if="playerWins > 0">{{ playerName }}: {{ playerWins }}</div> -->
         <div class="col-sm-12 gameHeader">
                 <h1 class="text-center">{{ gameTitle }}</h1>
 
 
         </div>
         <section id="gameBoard">
+            
             <article id="upperBoard" class="row ">
                 <div class="row">
                     <div id="entPlaNa" class="col-sm-12" v-if="!playerChoice"><!-- enter your name here, it will disappear when a choice is made -->
                 <h3 class="text-center">Enter your name:</h3>
-                  <input type="text" class="form-control entName text-center"  placeholder="Mysterious Stranger" v-model="playerName"/>
+                  <input type="text" class="form-control entName text-center"  placeholder="Mysterious Stranger" v-model.lazy="playerName"/>
                 </div> 
+            </transition>
             </div>   <!-- name display and rps choices -->
                 <div id="playerBox" class="col-sm-6 col-sm-offset-3">
                         <p v-if="playerName" class="text-center"><strong>Player:</strong> {{ playerName }}</p>
@@ -142,7 +228,7 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
 
                     <!-- player options, the user cannot change names without reloading after the first click -->
                     <div id="playerChoices"  class="text-center">
-                        <img @click="makeChoice" v-bind:src="imgs[0]" value="rock" alt="rock" id="playerRock" />
+                        <img @click="makeChoice" v-bind:src="imgs[0]" value="rock" alt="rock" id="playerRock" class="" />
                         <img @click="makeChoice" v-bind:src="imgs[1]" alt="paper" id="playerPaper" />
                         <img @click="makeChoice" v-bind:src="imgs[2]" alt="playerScissors" id="playerScissors" />
                     </div>
@@ -166,6 +252,7 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
                     <p v-else-if="victor == 'draw'" class="text-center alert alert-info"><strong>Draw Game.</strong></p>
                 
                 </div>
+                 
             </template> 
                 <!-- cpu draw -->
                 <template v-if="cpuChoice">
@@ -176,11 +263,31 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
                     <img v-else-if="cpuChoice == 'cpuScissors'" v-bind:src="imgs[2]" alt="cpuScissors2"  class="img-responsive center-block"/>
                 </div>
             </template>
+
+            <!-- displaying player and cpu accumulative wins -->
+        <div style="clear:both;"></div>
+            <div v-if="playerWins || cpuWins" class="row text-center allTheWins" v-bind:class="{goodJob: whoIsWinning}">
+                <div  class="col-sm-4" >
+                    <h3>
+                     Score:
+                    </h3>
+                    <i v-for="win in playerWins" class=" fa fa-star pulse animated delay-2s rotateIn"></i>
+
+                </div> <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <h3>Score:</h3>
+                    <i v-for="win in cpuWins" class="fa fa-star animated delay-2s rotateIn cpuStar"></i>
+
+                </div>
+
+            </div>
+            
             </article>
 
 
         </section>
    
     </main>
+
 
 </body> </html>

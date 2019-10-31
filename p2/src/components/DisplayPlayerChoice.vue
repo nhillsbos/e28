@@ -5,7 +5,7 @@
         <img v-else-if="playerChoice == 'playerPaper'" v-bind:src="paperImg" alt="paper" class="img-responsive"/>
         <img v-else-if="playerChoice == 'playerScissors'" v-bind:src="scissorsImg" alt="playerScissors" class="img-responsive"/>
                 </div>
-</template
+</template>
 <script>
 module.exports = {
         data: function() {

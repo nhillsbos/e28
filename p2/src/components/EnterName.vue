@@ -6,7 +6,7 @@
                     v-on:input="$emit('input', $event.target.value)"/>
                 </div> 
             </div>
-</template
+</template>
 <script>
 module.exports = {
         data: function () {

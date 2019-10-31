@@ -11,7 +11,7 @@
     <img @click="$emit('make-choice', 'playerScissors')" v-bind:src="scissorsImg" alt="playerScissors" id="playerScissors" />
 </div>
 </div>
-</template
+</template>
 <script>
 module.exports = {
         data: function() {

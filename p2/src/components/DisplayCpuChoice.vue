@@ -5,7 +5,7 @@
         <img v-else-if="cpuChoice == 'cpuPaper'" v-bind:src="paperImg" alt="paper" class="img-responsive"/>
         <img v-else-if="cpuChoice == 'cpuScissors'" v-bind:src="scissorsImg" alt="scissors" class="img-responsive"/>
                 </div>
-</template
+</template>
 <script>
 module.exports = {
         data: function() {

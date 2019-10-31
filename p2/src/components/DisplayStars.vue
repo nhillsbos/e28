@@ -14,7 +14,7 @@
                 </div>
 
             </div>
-</template
+</template>
 <script>
 module.exports = {
         data: function() {
