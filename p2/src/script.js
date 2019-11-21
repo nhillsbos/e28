@@ -48,12 +48,13 @@ let myApp = new Vue({
     methods: {
         defaultName: function(playerName) {
             this.playerName = playerName;
-            if (this.playerName == null) {
+            if (this.playerName === null) {
                 this.playerName = this.placeholderName;
             }
         },
         makeChoice: function (playerChoice) {//fires when player clicks choice, cpu
-
+            this.defaultName(this.playerName);
+            console.log(this.playerName);
             this.playerChoice = playerChoice;
             let randSel = this.randomSelect();
             console.log('randSel is: ' + randSel);

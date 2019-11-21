@@ -27,7 +27,7 @@ export default {
         return {
             category: 'produce',
             products: products,
-        }
+        };
     }
 
 }

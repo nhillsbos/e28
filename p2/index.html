@@ -32,7 +32,7 @@ integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/
 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- animate.css stuff -->
-<link rel="stylesheet" href="node_modules\animate.css\animate.min.css">
+<link rel="stylesheet" href="animate.min.css">
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script> -->
    <!--<script src="script.js" defer></script>--> 
@@ -233,6 +233,7 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
                v-on:make-choice="makeChoice($event)"
                 v-bind:player-name="playerName"
                 v-bind:placeholder-name="placeholderName">
+                
             </player-options> 
 
             </article>
@@ -257,7 +258,8 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
                <display-winner
                v-bind:player-name="playerName"
                v-bind:player-choice="playerChoice"
-               v-bind:victor="victor">
+               v-bind:victor="victor"
+               v-bind:placeholder-name="placeholderName">
                    </display-winner>
 
                 <!-- cpu draw -->

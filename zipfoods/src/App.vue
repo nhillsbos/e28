@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <img id="logo" alt="ZipFoods logo" src="./assets/images/zipfoods-logo.png" >
+    <img class="img-fluid" id="logo" alt="ZipFoods logo" src="./assets/images/zipfoods-logo.png" >
 
 <nav>
     <ul>
         <li v-for='link in links' :key='link'>
-            <router-link :to='paths[link]' exact>{{ link }}</router-link>
+            <router-link :to='{name: link}' exact>{{ link }}</router-link>
         </li>
     </ul>
 </nav>
@@ -18,6 +18,7 @@
 
 
 import { products } from './components/products.js';
+//const axios = require('axios');
 
 export default {
   name: 'app',
@@ -25,15 +26,21 @@ export default {
   data: function() {
     return {
         products: products,
-        links: ['home', 'products', 'categories'],
-paths: {
-    home: '/',
-    products: '/products',
-    categories: '/categories'
-}
+        links: ['home', 'products', 'categories', 'cart'],
         };
         
     },
+    mounted() {
+      let myObj = {name: 'roger', talent: 'cool technique'};
+
+      myObj = JSON.stringify(myObj);
+
+      localStorage.setItem('roger', myObj);
+      myObj = JSON.parse(localStorage.getItem('roger'));
+      console.log(myObj);
+
+     
+    }
   
 }
 </script>
