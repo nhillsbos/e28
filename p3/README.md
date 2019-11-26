@@ -8,7 +8,7 @@ My app is a blog. I have used it to make seven posts, each containing a piece fr
 
 ## Outside resources
 This helped me understand my "previous/next" post links weren't changing the view:
-[https://stackoverflow.com/questions/42603583/vue-js-same-component-with-different-routes]
+<https://stackoverflow.com/questions/42603583/vue-js-same-component-with-different-routes>
 
 ## Notes for instructor
 
