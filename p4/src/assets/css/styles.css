@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&display=swap');
+
+#app>p {
+    font-family: 'Roboto', sans-serif;
+}
+body {
+    background-color: dimgray;
+}
+
+/* header */
+
+.blog-header-img {
+    border-radius: 8px;
+    margin: 8px;
+}
+
+header {
+    background-color: black;
+    clear: both;
+}
+
+/* posts page */
+
+
+.blog-page {
+    padding:20px;
+    clear: both;
+    overflow: auto;
+    min-height: 500px;
+}
+
+a.post-title-link {
+text-decoration: none;
+color: #00df38;
+line-height: 0.2em;
+}
+a.post-title-link:hover {
+    text-decoration: none;
+    color: #dd1802;
+    }
+
+.postNav {
+    margin-right: 5px;
+}
+
+.postNav:last-child {
+    margin-right: 0;
+}
+
+.quickbtn {
+    margin-right: 8px;
+}
+
+.quicknavcontrol>button {
+    margin-right: 5px;
+}
+
+.quicknavcontrol>button:last-child {
+    margin-right: 0;
+}
+
+.quicknavtitle:hover {
+    background-color:red;
+}
+
+
+.quicknavpostblock{
+margin-top:15px;
+padding:25px;
+max-width:100%;
+border-radius: 15px;
+display: block;
+}
+
+.quicknavpostcontainer {
+    margin: auto 0;
+}
+
+.keywords {
+    list-style-type: none;
+    display: inline-block;
+    margin: auto 0;
+}
+
+.keywords>li {
+    float:left;
+    margin-right: 5px;
+}
+
+.keywords>li:last-child {
+    
+    margin-right: 0px;
+}
+
+.favpagelist {
+    list-style-type: none;
+    display: block;
+}
+
+.favpagelist>li {
+    padding:10px;
+    margin-bottom: 15px;
+    border: royalblue;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 18px;
+}
+
+.favbtndiv {
+    float: right;
+}
+
+.allPostsTitle {
+    font-weight: 900;
+    font-family: 'Roboto', sans-serif;
+    font-size: 3.9em;
+}
+
+.postPageTitle {
+    font-size: 2.15em;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 700;
+}
+
+
+
+.blog-post {
+    margin-left: 75px;
+    margin-bottom: 35px;
+    width:85%;
+    float: right;
+    clear: both;
+}
+
+.blog-post-footer {
+    margin-bottom: 15px;
+}
+
+.favbtndiv {
+    margin-bottom: 12px;
+}
+
+/* bootstrap adjustments */
+
+.container {
+    min-width: 65%;
+    max-width: 75%;
+    background-color: cornsilk;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 8px;
+    padding:0px;
+}

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="container" id="app">
     <img class="img-fluid" id="logo" alt="ZipFoods logo" src="./assets/images/zipfoods-logo.png" >
 
 <nav>
