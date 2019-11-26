@@ -22,6 +22,13 @@ export default new Vuex.Store({
                     fav: false
                 });
             }
+
+            /*
+            ? fdfd
+            ! watch out!
+            TODO do this do that!
+            
+            */
             state.favArray = array;
             console.log(state.favArray);
         },
@@ -46,3 +53,4 @@ export default new Vuex.Store({
         }
     }
 })
+

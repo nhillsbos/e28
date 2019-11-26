@@ -17,6 +17,7 @@
       <router-link class="post-preview-link btn btn-info" :to="{name: 'Post', params: {'id': post.id}}">
         Read more
       </router-link>
+ 
     </div>
   </div>
 </template>
@@ -31,3 +32,4 @@ export default {
   },
 };
 </script>
+
