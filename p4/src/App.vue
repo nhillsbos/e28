@@ -33,10 +33,6 @@ export default {
       links: ["Home", "Posts","Favorite Posts"],
     };
   },
-  mounted() {
-    this.$store.dispatch('setPosts');
-    this.$store.dispatch('setFavArray');
-  }
 };
 </script>
 
