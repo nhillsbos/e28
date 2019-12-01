@@ -33,6 +33,9 @@ export default {
       links: ["Home", "Posts","Favorite Posts"],
     };
   },
+  mounted() {
+    this.$store.dispatch('setPosts'); // * see 'store/index.js' for api link
+  }
 };
 </script>
 

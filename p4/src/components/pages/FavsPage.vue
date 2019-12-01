@@ -1,5 +1,8 @@
 <template>
     <div class="blog-page" id='favspage'>
+        <vm-loading
+        >
+        </vm-loading>
         <h1 class="display-2 text-left allPostsTitle">Your Favorite Chapters</h1>
 
         <ul class="favpagelist" v-if='posts.length > 0'>
@@ -30,6 +33,11 @@ export default {
         },
         removeFromFavslist: function(postId) {
             this.favslist.remove(postId);
+            if (localStorage.getItem('favPost' + postId)) {
+                console.log('hello');
+                localStorage.removeItem('favPost' + postId);
+                
+            }
         }
     },
     computed: {
@@ -41,17 +49,6 @@ export default {
         this.favslist = new Favlist();
         this.favs = this.favslist.getFavs();
 
-    /*
-        //axios
-        axios
-      .get(
-        "https://my-json-server.typicode.com/nhillsbos/p3-api/posts/"
-      )
-      .then(response => {
-        //this.posts = response.data;
-      });
-
-      */
     }
 };
 </script>

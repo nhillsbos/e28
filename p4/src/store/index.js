@@ -8,30 +8,12 @@ export default new Vuex.Store({
     state: {
         favCount: 0,
         posts: [],
-        favArray: [],
     },
     mutations: {
         setPosts(state, payload) {
             state.posts = payload;
         },
-        setFavArray(state, payload) {
-            let array = payload;
-            for (let i = 0; i < state.posts.length; i++) {
-                array.push({
-                    id: state.posts[i].id,
-                    fav: false
-                });
-            }
-
-            /*
-            ? fdfd
-            ! watch out!
-            TODO do this do that!
-            
-            */
-            state.favArray = array;
-            console.log(state.favArray);
-        },
+       
     },
     actions: {
         setPosts(context) {
@@ -41,9 +23,6 @@ export default new Vuex.Store({
                 }
             );
         },
-        setFavArray(context) {
-            context.commit('setFavArray', );
-        }
     },
     getters: {
         getPostById(state) {

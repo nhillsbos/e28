@@ -9,6 +9,8 @@ import BlogPostPage from './components/pages/BlogPostPage.vue';
 import FavsPage from './components/pages/FavsPage.vue';
 import store from './store/index.js';
 
+
+
 Vue.use(VueRouter);
 Vue.config.productionTip = false;
 
@@ -29,7 +31,7 @@ const routes = [{
     props: true,
   },
   {
-    path: '/post/favs',
+    path: '/favs',
     component: FavsPage,
     name: 'Favorite Posts',
     props: true,

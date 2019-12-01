@@ -1,8 +1,8 @@
 <!-- src/components/BlogPost.vue -->
 <template>
-  <div class="blog-post col-lg-11">
+  <div v-if="(visible == post.visible) || (visible == 'all')" class="blog-post col-lg-11">
     <div class="blog-post-header col-lg-6">
-      <router-link class="post-title-link" :to="{name: 'Post', params: {'id': post.id}}">
+      <router-link data-test="post-link" class="post-title-link" :to="{name: 'Post', params: {'id': post.id}}">
         <h3>
           {{ post.title }}
           <br />
@@ -25,7 +25,7 @@
 <script>
 export default {
   name: "BlogPost",
-  props: ["post"],
+  props: ["post", "visible"],
   data: function() {
     return {
     };

@@ -2,52 +2,40 @@
 <template>
   <div class="blog-page" id="posts">
     <h1 class="display-2 text-left allPostsTitle">The Inner Chapters of the Zhuangzi</h1>
-    <blog-post :posts="posts" v-for="post in posts" :key="post.id" :post="post"></blog-post>
+    <post-filter-nav
+    :posts="posts"
+    v-on:set-chapter="setChapter($event)">
+    </post-filter-nav>
+    <blog-post :visible="visible" :posts="posts" v-for="post in posts" :key="post.id" :post="post"></blog-post>
   </div>
 </template>
 
 <script>
 import BlogPost from "./../BlogPost.vue";
-
+import PostFilterNav from "./../PostFilterNav.vue";
 export default {
   name: "BlogPostsPage",
-  components: { BlogPost },
-  props: ["loadChapter"],
+  components: { BlogPost, PostFilterNav },
   data: function() {
     return {
-      myJSON: null,
-      category: null
+      visible: 'all',
     };
   },
   methods: {
-    setChapter: function(e) {
-      this.currentChapter = e.target.name;
-      this.currentChapter = this.loadChapter;
+    setChapter(e) {
+      this.visible = e;
+      localStorage.setItem('quicknav', JSON.stringify(this.visible));
     }
-
-    /*
-    makeFav: function() {
-      console.log(this.posts.favorite);
-      this.posts.favorite = !this.posts.favorite;
-    },
-    chooseCategory: function(e) {
-        this.category = e.target.id;
-        console.log(this.category);
-    },*/
   },
   computed: {
     posts: function() {
-      return this.$store.state.posts;
-    }
+      return this.$store.state.posts; // * see 'store/index.js' for api link
+    },
   },
   mounted() {
-    /*
-    axios
-      .get("https://my-json-server.typicode.com/nhillsbos/p3-api/posts/")
-      .then(response => {
-        //this.posts = response.data;
-      });
-      */
+      if (localStorage.getItem('quicknav')) {
+        this.visible = JSON.parse(localStorage.getItem('quicknav'));
+      }
   }
 };
 </script>
