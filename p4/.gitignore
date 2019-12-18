@@ -5,6 +5,7 @@ node_modules
 # misc
 posts.json
 posts.js
+vuemerang
 
 # local env files
 .env.local
