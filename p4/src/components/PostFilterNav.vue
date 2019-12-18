@@ -4,7 +4,7 @@
      <nav v-if="isnav" id="postfilternav" class="col-lg-8">
       <ul>
           <li  class="btn btn-dark btn-small quicknavbtn" @click="$emit('set-chapter', 'all')">All Chapters</li>
-          <li v-for="post in posts" :key="post.id" class="btn btn-dark btn-small quicknavbtn" 
+          <li :id="'navfilterbtn-' + post.id" v-for="post in posts" :key="post.id" class="btn btn-dark btn-small quicknavbtn" 
           @click="$emit('set-chapter', post.visible)">Chapter {{post.id}}</li>
       </ul>
   </nav>

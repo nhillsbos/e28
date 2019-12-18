@@ -21,8 +21,8 @@
         >Remove from Favorites' List</div>
         <br />
 
-        <div class="btn btn-success" v-if="addAlert">Added...</div>
-        <div class="btn btn-danger" v-if="unfavAlert">Removed...</div>
+        <div id="addAlertBtn" class="btn btn-success" v-if="addAlert">Added...</div>
+        <div id="removeAlertBtn" class="btn btn-danger" v-if="unfavAlert">Removed...</div>
       </div>
     </div>
     <div class="col-lg-10 text-right">
@@ -37,6 +37,7 @@
     </div>
     <div class="text-center">
       <router-link
+      id="prevPostBtn"
         class="btn btn-info postNav"
         v-if="post.prev != ''"
         :to="{name: 'Post', params: {'id': post.prev}}"
@@ -46,6 +47,7 @@
         :to="{name: 'Posts'}"
       >Return to all posts.</router-link>
       <router-link
+        id="nextPostBtn"
         class="btn btn-info postNav btn-primary"
         v-if="post.next != ''"
         :to="{name: 'Post', params: {'id': post.next}}"
@@ -75,11 +77,13 @@ export default {
       // * individual page fav
       this.togglePostFav();
       if (this.isfav === false) {
+        this.$store.commit('updateFavCount', -1);
         this.unfavAlert = true;
-        setTimeout(() => (this.unfavAlert = false), 2000);
+        setTimeout(() => (this.unfavAlert = false), 950);
       } else if (this.isfav === true) {
+        this.$store.commit('updateFavCount', 1);
         this.addAlert = true;
-        setTimeout(() => (this.addAlert = false), 2000);
+        setTimeout(() => (this.addAlert = false), 950);
       }
     },
     togglePostFav() {
@@ -89,7 +93,10 @@ export default {
       } else {
         localStorage.setItem("favPost" + this.id, JSON.stringify(this.isfav));
       }
-    }
+    },
+    favCount() {
+
+    },
     /* if (localStorage.getItem("myfavslist")) {
         let update = JSON.parse(localStorage.getItem("myfavslist"));
 

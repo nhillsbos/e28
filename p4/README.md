@@ -1,14 +1,21 @@
-# Project 3
-+ By: Nick Hills
-+ Production URL: <http://p3.daoist.life>
 
 
-## Outline of features
-My app is a blog. I have used it to make seven posts, each containing a piece from one chapter. There is a page that displays all posts. The user can click on the post and be taken to an individual page. Said pages allow the user to go back and forth, or return to all posts. The user can also click on a "favorite" button on the individual post page. Favorite post titles are displayed as links on the "favorite posts page." 
+# Project 4
++ By: Nicholas Hills
++ Production URL: <http://p4.daoist.life>
+
+## Improvements based on P3 peer review feedback
+My reviewer pointed out an error in my path names. I changed my "favorites" page path name to "/favs" to fix the issue. They also noted that 
+my "favorites" page displayed no text for when the user has no favorites. I added a message saying "no messages" to prevent any confusion.
 
 ## Outside resources
-This helped me understand my "previous/next" post links weren't changing the view:
-[https://stackoverflow.com/questions/42603583/vue-js-same-component-with-different-routes]
+Bootstrap3 <http://getbootstrap.com>
 
 ## Notes for instructor
+I have added several features to my blog. The "posts" page features a filter on top that will give the user any chapter at a click. The filter
+users local storage to save the user's choice. Individual post pages feature a nav system that lets the user return to "posts" page or "go back, go forward."
 
+The user can add a post to their favorites' list with the favorites' button. The button changes appearance based on its favorite status. The number
+of favorited posts are displayed next to the "favorite posts" link in the header/footer navbars.
+
+The favorites' page will feature a list of posts by title and author. The post title will link to the post. The user can remove the posts by clicking the "x" button. 

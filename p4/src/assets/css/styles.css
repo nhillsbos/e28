@@ -4,8 +4,9 @@
     font-family: 'Roboto', sans-serif;
 }
 body {
-    background-color: dimgray;
+    background-color: whitesmoke;
 }
+
 
 /* header */
 
@@ -31,7 +32,7 @@ header {
 
 a.post-title-link {
 text-decoration: none;
-color: #00df38;
+color: #03c7dc;
 line-height: 0.2em;
 }
 a.post-title-link:hover {
@@ -41,6 +42,7 @@ a.post-title-link:hover {
 
 .postNav {
     margin-right: 5px;
+    margin-bottom: 8px;
 }
 
 .postNav:last-child {
@@ -99,15 +101,19 @@ display: block;
 .favpagelist {
     list-style-type: none;
     display: block;
+    max-width: 750px;
+    float: left;
+    margin-left: 75px;
 }
 
 .favpagelist>li {
     padding:10px;
     margin-bottom: 15px;
-    border: royalblue;
-    border-width: 5px;
-    border-style: solid;
-    border-radius: 18px;
+    border-style: groove;
+    border-width: 13px;
+    border-color: thistle;
+    border-radius: 8px;
+    box-shadow: 5px 5px 3px rgba(55,65,75,0.85);
 }
 
 .favbtndiv {
@@ -115,7 +121,7 @@ display: block;
 }
 
 .favbtn {
-    margin-bottom: 8px;
+    margin: 8px;
 }
 
 .allPostsTitle {
@@ -146,6 +152,47 @@ display: block;
 
 .favbtndiv {
     margin-bottom: 12px;
+}
+
+#contactPage {
+    min-height: 650px;
+}
+
+#contactPage form {
+margin:15px;
+background-color: #ecffd7;
+border-radius: 15px;
+box-shadow: 5px 5px 5px darkslategray;
+padding:10px;
+max-width:450px;
+}
+
+#contactPage form p {
+    font-size:1.5em;
+}
+
+#contactPage input, 
+#contactPage textarea, 
+#contactPage select {
+margin-bottom: 8px;
+border-radius:8px;
+}
+
+#contactPage input:hover, 
+#contactPage textarea:hover, 
+#contactPage select:hover {
+    border-color: red;
+    border-width: 1.5px;
+}
+
+#contactPage input:focus, 
+#contactPage textarea:focus, 
+#contactPage select:focus {
+    background-color:#fefdc5;
+}
+
+.coolClass {
+    background-color:red;
 }
 
 /* bootstrap adjustments */

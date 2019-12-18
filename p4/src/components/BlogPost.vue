@@ -1,6 +1,6 @@
 <!-- src/components/BlogPost.vue -->
 <template>
-  <div v-if="(visible == post.visible) || (visible == 'all')" class="blog-post col-lg-11">
+  <div :id="'blogPost-' + post.id" v-if="(visible == post.visible) || (visible == 'all')" class="blog-post col-lg-11">
     <div class="blog-post-header col-lg-6">
       <router-link data-test="post-link" class="post-title-link" :to="{name: 'Post', params: {'id': post.id}}">
         <h3>

@@ -5,7 +5,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <ul class="navbar-nav">
         <li v-for="link in links" :key="link" class="nav-item">
-          <router-link :to="{name: link}" class="nav-link" exact>{{ link }}</router-link>
+          <router-link :to="{name: link}" class="nav-link" exact>{{ link }} <span v-if="link == 'Favorite Posts'">{{ getFavCount }}</span></router-link>
         </li>
       </ul>
     </nav>
@@ -14,9 +14,13 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <ul class="navbar-nav">
         <li v-for="link in links" :key="link" class="nav-item">
-          <router-link :to="{name: link}" class="nav-link" exact>{{ link }}</router-link>
+          <router-link :to="{name: link}" class="nav-link" exact>{{ link }} 
+            <span v-if="link == 'Favorite Posts'">{{ getFavCount }}</span>
+            </router-link>
         </li>
+       
       </ul>
+     
     </nav>
   </div>
 </template>
@@ -30,11 +34,17 @@ export default {
   data: function() {
     return {
       posts: null,
-      links: ["Home", "Posts","Favorite Posts"],
+      links: ["Home","Contact", "Posts","Favorite Posts"],
     };
   },
   mounted() {
     this.$store.dispatch('setPosts'); // * see 'store/index.js' for api link
+    this.favCount = this.$store.state.favCount;
+  },
+  computed: {
+    getFavCount: function() {
+      return this.$store.state.favCount;
+    }
   }
 };
 </script>

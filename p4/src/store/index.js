@@ -13,6 +13,12 @@ export default new Vuex.Store({
         setPosts(state, payload) {
             state.posts = payload;
         },
+        setFavCount(state, payload) {
+            state.favCount = payload;
+        },
+        updateFavCount(state, payload) {
+            state.favCount += payload;
+        },
        
     },
     actions: {

@@ -8,9 +8,12 @@ import BlogPostsPage from './components/pages/BlogPostsPage.vue';
 import BlogPostPage from './components/pages/BlogPostPage.vue';
 import FavsPage from './components/pages/FavsPage.vue';
 import store from './store/index.js';
+import ContactPage from './components/pages/ContactPage.vue';
+import Vuelidate from 'vuelidate'
 
 
 
+Vue.use(Vuelidate);
 Vue.use(VueRouter);
 Vue.config.productionTip = false;
 
@@ -36,6 +39,11 @@ const routes = [{
     name: 'Favorite Posts',
     props: true,
   },
+  {
+    path: '/contact',
+    component: ContactPage,
+    name: 'Contact',
+  }
 ];
 
 const router = new VueRouter({
