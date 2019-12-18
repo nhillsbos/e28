@@ -19,3 +19,5 @@ The user can add a post to their favorites' list with the favorites' button. The
 of favorited posts are displayed next to the "favorite posts" link in the header/footer navbars.
 
 The favorites' page will feature a list of posts by title and author. The post title will link to the post. The user can remove the posts by clicking the "x" button. 
+
+The "contact page" features a simple "contact us" form with vuelidate taking care of the simple form validation. When the user submits their message, a message thanking the user by name is displayed.
