@@ -39,16 +39,17 @@ export default {
   },
   mounted() {
     this.$store.dispatch('setPosts'); // * see 'store/index.js' for api link
-    this.favCount = this.$store.state.favCount;
-  },
-  computed: {
-    getFavCount: function() {
-    if (localStorage.getItem('getFavCount')) {
-                return JSON.parse(localStorage.getItem('getFavCount'));
+    
+     if (localStorage.getItem('getFavCount')) {
+                this.$store.state.favCount = JSON.parse(localStorage.getItem('getFavCount'));
                 
             } else {
             localStorage.setItem('getFavCount',JSON.stringify(this.$store.state.favCount));
-      return 0;
+      
+  },
+  computed: {
+    getFavCount: function() {
+   return this.$store.state.favCount;
     }
   }
 }
