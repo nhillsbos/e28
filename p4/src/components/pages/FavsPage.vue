@@ -5,7 +5,7 @@
      
             
 
-<div v-if="favCount!==0">
+<div>
         <ul class="favpagelist" v-if='posts.length > 0'>
             <li class="favlistitem" :id="'favlistitem-' + post.id" v-for='post in favs' :key='post.id'>
                <div class=" favbtndiv"> <button @click='removeFromFavslist(post.id)'>X</button></div>
@@ -14,10 +14,11 @@
                </router-link>
             </li>
         </ul>
+        <div v-else>
+        <p>No favorite posts.</p>
+        </div v-else>
         </div>
-           <div v-else>
-            <p>You have no favorite chapters.</p>
-            </div>
+          
 
     </div>
     
@@ -40,9 +41,6 @@ export default {
             return this.posts.find(({ id }) => id === postId);
         },
         removeFromFavslist: function(postId) {
-            this.$store.commit('updateFavCount',-1);
-            this.favCount = this.$store.state.favCount;//making sure local favcount is updated
-            
             this.favslist.remove(postId);
             if (localStorage.getItem('favPost' + postId)) {
                 localStorage.removeItem('favPost' + postId);
@@ -58,7 +56,6 @@ export default {
     mounted() {
         this.favslist = new Favlist();
         this.favs = this.favslist.getFavs();
-        this.favCount = this.$store.state.favCount;
     },
 
 };
