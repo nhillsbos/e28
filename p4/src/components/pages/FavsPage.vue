@@ -5,7 +5,7 @@
      
             
 
-<div v-if="favCount>0">
+<div v-if="favCount!==0">
         <ul class="favpagelist" v-if='posts.length > 0'>
             <li class="favlistitem" :id="'favlistitem-' + post.id" v-for='post in favs' :key='post.id'>
                <div class=" favbtndiv"> <button @click='removeFromFavslist(post.id)'>X</button></div>
