@@ -43,7 +43,12 @@ export default {
   },
   computed: {
     getFavCount: function() {
-      return this.$store.state.favCount;
+    if (localStorage.getItem('getFavCount')) {
+                return JSON.parse(localStorage.getItem('getFavCount'));
+                
+            } else {
+            localStorage.setItem('getFavCount',JSON.stringify(this.$store.state.favCount));
+      return 0;
     }
   }
 };
